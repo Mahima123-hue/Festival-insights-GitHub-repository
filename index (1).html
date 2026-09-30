@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Festival Spike Story – PAR Punchh</title>
+<meta name="description" content="Which restaurant segment spikes on which festival, and which generation drives the spike.">
+<meta property="og:title" content="Right festival. Right guest. – Festival Spike Story">
+<meta property="og:description" content="4 segments, 7 festivals, 3 generations: where festival-day sales spike and who drives it.">
+<meta property="og:type" content="website">
+<style>
+:root{
+  --bg:#323451; --deep:#212438; --panel:#2A2D48; --line:#454A70;
+  --ink:#FFFFFF; --soft:#D3D8F0; --mute:#A9AFD0;
+  --genz:#8C9FFF; --mill:#6864D1; --genx:#F8931C; --peak:#FF5719;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--soft);font-family:Arial,Helvetica,sans-serif;font-size:16px;line-height:1.55}
+a{color:var(--genz)}
+:focus-visible{outline:2px solid var(--genz);outline-offset:3px;border-radius:3px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 28px}
+.strip{height:5px;background:linear-gradient(90deg,#F8931C,#FF5719 33%,#6864D1 66%,#8C9FFF)}
+nav{position:sticky;top:0;z-index:10;background:rgba(33,36,56,.94);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;gap:22px;height:56px;overflow-x:auto;white-space:nowrap}
+nav img{height:22px;margin-right:10px}
+nav a{color:var(--soft);text-decoration:none;font-size:14px;padding:4px 0;border-bottom:2px solid transparent}
+nav a:hover{color:var(--ink);border-bottom-color:var(--genz)}
+header{padding:72px 0 56px}
+.kicker{color:var(--genz);font-weight:bold;font-size:15px;margin:0 0 14px}
+h1{color:var(--ink);font-size:clamp(38px,6vw,64px);line-height:1.05;margin:0 0 18px;letter-spacing:-.02em}
+.lede{font-size:19px;max-width:60ch;margin:0 0 44px}
+.answers{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.answers li{display:grid;grid-template-columns:170px 1fr 150px 1fr;gap:18px;align-items:baseline;padding:18px 0;border-bottom:1px solid var(--line)}
+.answers .seg{color:var(--ink);font-weight:bold;font-size:17px}
+.answers .fest{font-size:17px}
+.answers .lift{color:var(--peak);font-weight:bold;font-size:34px;letter-spacing:-.02em}
+.answers .who{font-size:16px}
+.answers .who b{font-size:17px}
+section{padding:64px 0;border-top:1px solid var(--line)}
+h2{color:var(--ink);font-size:clamp(26px,3.4vw,34px);line-height:1.15;margin:0 0 12px;letter-spacing:-.01em}
+.chap{color:var(--genz);font-weight:bold;font-size:15px;margin:0 0 8px}
+.intro{max-width:68ch;font-size:17px;margin:0 0 28px}
+.grid{display:grid;grid-template-columns:1.25fr 1fr;gap:22px}
+.panel{background:var(--deep);border-radius:12px;padding:20px 20px 14px}
+.panel h3{color:var(--ink);font-size:15.5px;margin:0 0 12px}
+.chart{position:relative;height:300px}
+.chart.tall{height:340px}
+.facts{display:flex;flex-wrap:wrap;gap:12px 36px;margin:26px 0 18px}
+.fact b{display:block;font-size:30px;color:var(--ink);letter-spacing:-.02em}
+.fact span{font-size:14px;color:var(--mute)}
+.notes{margin:0;padding-left:20px;max-width:80ch}
+.notes li{margin:6px 0}
+.notes strong{color:var(--ink)}
+.legend{display:flex;gap:18px;flex-wrap:wrap;font-size:14px;margin:0 0 20px}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:7px;vertical-align:-1px}
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.three .panel h3{font-size:17px}
+table{width:100%;border-collapse:collapse;font-size:15px}
+th{background:var(--mill);color:var(--ink);text-align:left;padding:12px 14px;font-size:14px}
+td{padding:13px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+td:first-child{color:var(--ink);font-weight:bold}
+td.gen{color:var(--genz);font-weight:bold}
+.tablewrap{overflow-x:auto;border-radius:12px;background:var(--deep)}
+.controls{display:flex;gap:16px;flex-wrap:wrap;margin:0 0 20px}
+label{font-size:14px;color:var(--mute);display:flex;flex-direction:column;gap:6px}
+select{background:var(--deep);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:10px 12px;font:inherit;min-width:220px}
+.pos{color:#9BE3B3}.neg{color:#FF8A66}
+.small{font-size:14px;color:var(--mute)}
+footer{padding:40px 0 56px;border-top:1px solid var(--line);font-size:14px;color:var(--mute)}
+@media (max-width:860px){
+  .grid,.three{grid-template-columns:1fr}
+  .answers li{grid-template-columns:1fr 1fr;gap:4px 16px}
+  .answers .lift{font-size:28px}
+}
+</style>
+</head>
+<body>
+<div class="strip"></div>
+<nav aria-label="Sections"><div class="wrap">
+  <img src="data:image/png;base64,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" alt="PAR">
+  <a href="#casual-dining">Casual Dining</a><a href="#quick-service">Quick Service</a><a href="#c-store">C-Store</a><a href="#fast-casual">Fast Casual</a>
+  <a href="#basket">Traffic vs ticket</a><a href="#generations">Generations</a><a href="#watch-outs">Watch-outs</a><a href="#playbook">Playbook</a><a href="#explore">Explore the data</a>
+</div></nav>
+
+<header><div class="wrap">
+  <p class="kicker">Festival spend study, September 2026</p>
+  <h1>Right festival.<br>Right guest.</h1>
+  <p class="lede">Every restaurant segment has one festival that lifts it far above a normal day, and one generation behind that lift. Here is who, when and by how much, measured against each segment's own prior 7-day daily average.</p>
+  <ul class="answers">
+    <li><span class="seg">Casual Dining</span><span class="fest">peaks on Mother's Day</span><span class="lift">+83%</span><span class="who">driven by <b style="color:#9C99F0">Millennials, +88%</b></span></li>
+    <li><span class="seg">Quick Service</span><span class="fest">peaks on Thanksgiving Eve</span><span class="lift">+60%</span><span class="who">driven by <b style="color:var(--genx)">Gen X + Other, +114%</b></span></li>
+    <li><span class="seg">C-Store</span><span class="fest">peaks on Valentine's Day</span><span class="lift">+52%</span><span class="who">driven by <b style="color:var(--genx)">Gen X + Other, +63%</b></span></li>
+    <li><span class="seg">Fast Casual</span><span class="fest">peaks on New Year's Eve</span><span class="lift">+22%</span><span class="who">driven by <b style="color:var(--genz)">every generation, about +21%</b></span></li>
+  </ul>
+</div></header>
+
+<main>
+<section id="casual-dining"><div class="wrap">
+  <p class="chap">Chapter 1: Casual Dining</p>
+  <h2>Parents' days are Casual Dining's biggest moment</h2>
+  <p class="intro">Mother's Day and Father's Day deliver the two largest segment spikes in the whole dataset. Millennials lead, but every generation lifts more than 60%, so this is the one occasion that brings the entire guest base in.</p>
+  <div class="grid">
+    <div class="panel"><h3>Festival-day sales lift vs prior 7-day average</h3><div class="chart"><canvas id="f_cd"></canvas></div></div>
+    <div class="panel"><h3>Who drove it: sales lift by generation, peak vs dip</h3><div class="chart"><canvas id="c_cd"></canvas></div></div>
+  </div>
+  <div class="facts"><div class="fact"><b>+83%</b><span>Mother's Day sales lift</span></div><div class="fact"><b>+40%</b><span>more visits on the same day</span></div><div class="fact"><b style="color:#9C99F0">+88%</b><span>Millennial sales lift</span></div></div>
+  <ul class="notes">
+    <li><strong>Both parents' days work:</strong> Father's Day is almost as strong at +78%, with visits up 41%.</li>
+    <li><strong>Traffic and ticket grow together:</strong> Millennial visits rise 51% on Mother's Day, the largest visit jump of any group.</li>
+    <li><strong>Halloween is the dip:</strong> sales fall 15% and all three generations decline.</li>
+  </ul>
+</div></section>
+
+<section id="quick-service"><div class="wrap">
+  <p class="chap">Chapter 2: Quick Service</p>
+  <h2>Thanksgiving Eve: Gen X feeds the family</h2>
+  <p class="intro">Quick Service has one clear peak. On the night before Thanksgiving, sales jump 60% while visits rise only 12%, so the spike comes from much bigger orders. Gen X households drive it almost single-handedly.</p>
+  <div class="grid">
+    <div class="panel"><h3>Festival-day sales lift vs prior 7-day average</h3><div class="chart"><canvas id="f_qsr"></canvas></div></div>
+    <div class="panel"><h3>Who drove it: sales lift by generation, peak vs dip</h3><div class="chart"><canvas id="c_qsr"></canvas></div></div>
+  </div>
+  <div class="facts"><div class="fact"><b>+60%</b><span>Thanksgiving Eve sales lift</span></div><div class="fact"><b>+12%</b><span>visits: a basket-led spike</span></div><div class="fact"><b style="color:var(--genx)">+114%</b><span>Gen X sales lift, the biggest spike in the data</span></div></div>
+  <ul class="notes">
+    <li><strong>Sales grow five times faster than visits</strong> as families order for the whole household.</li>
+    <li><strong>Gen Z barely moves on Thanksgiving Eve (+9%).</strong> Their night is New Year's Eve, when they lift 17% while Gen X pulls back 24%.</li>
+    <li><strong>Easter looks flat (+7%) but visits fall 32%:</strong> fewer guests, much larger orders.</li>
+  </ul>
+</div></section>
+
+<section id="c-store"><div class="wrap">
+  <p class="chap">Chapter 3: C-Store</p>
+  <h2>Valentine's Day is a last-minute gift run</h2>
+  <p class="intro">C-Store's peak is Valentine's Day, up 52% on 12% more visits. Gen X and Millennials fill bigger baskets with grab-and-go gifts. The family holidays work the other way and pull every generation out of the store.</p>
+  <div class="grid">
+    <div class="panel"><h3>Festival-day sales lift vs prior 7-day average</h3><div class="chart"><canvas id="f_cs"></canvas></div></div>
+    <div class="panel"><h3>Who drove it: sales lift by generation, peak vs dip</h3><div class="chart"><canvas id="c_cs"></canvas></div></div>
+  </div>
+  <div class="facts"><div class="fact"><b>+52%</b><span>Valentine's Day sales lift</span></div><div class="fact"><b>+12%</b><span>visits: bigger baskets</span></div><div class="fact"><b style="color:var(--genx)">+63%</b><span>Gen X sales lift</span></div></div>
+  <ul class="notes">
+    <li><strong>Gen X (+63%) and Millennials (+56%)</strong> make up nearly all of the lift. Gen Z adds a smaller +28%.</li>
+    <li><strong>Family days drain the store:</strong> Mother's Day, Father's Day and Easter run 27% to 31% below a normal day.</li>
+    <li><strong>Halloween is a quiet second peak</strong> at +12%, led by Millennials.</li>
+  </ul>
+</div></section>
+
+<section id="fast-casual"><div class="wrap">
+  <p class="chap">Chapter 4: Fast Casual</p>
+  <h2>New Year's Eve brings everyone in</h2>
+  <p class="intro">Fast Casual's peak is smaller but unusual. On New Year's Eve, visits (+24%) grow faster than sales (+22%), and all three generations lift by almost the same amount. It is a traffic moment, not a basket moment.</p>
+  <div class="grid">
+    <div class="panel"><h3>Festival-day sales lift vs prior 7-day average</h3><div class="chart"><canvas id="f_fc"></canvas></div></div>
+    <div class="panel"><h3>Who drove it: sales lift by generation, peak vs dip</h3><div class="chart"><canvas id="c_fc"></canvas></div></div>
+  </div>
+  <div class="facts"><div class="fact"><b>+22%</b><span>New Year's Eve sales lift</span></div><div class="fact"><b>+24%</b><span>visits: a traffic-led peak</span></div><div class="fact"><b style="color:var(--genz)">+21% to +22%</b><span>every generation</span></div></div>
+  <ul class="notes">
+    <li><strong>The only segment peak where visits outpace sales.</strong> Speed and capacity matter more than upselling.</li>
+    <li><strong>Easter is the deepest drop in the dataset:</strong> sales fall 38% and visits 46%, across every generation.</li>
+    <li><strong>Mother's Day is a modest +11%,</strong> led by Gen X; Gen Z actually spends less.</li>
+  </ul>
+</div></section>
+
+<section id="basket"><div class="wrap">
+  <h2>Where the money comes from: more guests, or bigger orders?</h2>
+  <p class="intro">Comparing the sales lift with the visit lift shows what kind of spike each peak is. When sales rise far above visits, guests are spending more per order.</p>
+  <div class="panel"><h3>Sales lift vs visits lift at each segment's key festival</h3><div class="chart tall"><canvas id="basketChart"></canvas></div></div>
+  <ul class="notes" style="margin-top:20px">
+    <li><strong>Basket-led:</strong> Thanksgiving Eve in Quick Service and Valentine's in C-Store. Push bundles, family packs and add-ons.</li>
+    <li><strong>Both together:</strong> the parents' days in Casual Dining grow visits and checks at once.</li>
+    <li><strong>Traffic-led:</strong> New Year's Eve in Fast Casual. Plan for throughput.</li>
+  </ul>
+</div></section>
+
+<section id="generations"><div class="wrap">
+  <h2>Each generation has its signature moment</h2>
+  <p class="intro">Looking across all segments, each generation's four biggest festival spikes tell a clear story about when to reach them.</p>
+  <div class="legend"><span><i style="background:var(--genz)"></i>Gen Z</span><span><i style="background:var(--mill)"></i>Millennial</span><span><i style="background:var(--genx)"></i>Gen X + Other</span></div>
+  <div class="three">
+    <div class="panel"><h3 style="color:var(--genz)">Gen Z</h3><div class="chart"><canvas id="g_z"></canvas></div><p class="small">Shows up for family dining on the parents' days. Limited-service occasions barely register.</p></div>
+    <div class="panel"><h3 style="color:#9C99F0">Millennial</h3><div class="chart"><canvas id="g_m"></canvas></div><p class="small">Owns the Casual Dining parents' days and has a strong Thanksgiving Eve QSR run.</p></div>
+    <div class="panel"><h3 style="color:var(--genx)">Gen X + Other</h3><div class="chart"><canvas id="g_x"></canvas></div><p class="small">Creates the single biggest spike of all and leads Valentine's C-Store shopping.</p></div>
+  </div>
+</div></section>
+
+<section id="watch-outs"><div class="wrap">
+  <h2>Where the calendar works against you</h2>
+  <p class="intro">Some festivals pull guests away. In every one of these drops, all three generations fall together, so the cause is the occasion itself, not a single audience.</p>
+  <div class="grid">
+    <div class="panel"><h3>Biggest festival-day sales drops vs prior 7-day average</h3><div class="chart"><canvas id="watchChart"></canvas></div></div>
+    <div>
+      <ul class="notes">
+        <li><strong>Easter is the most dangerous day.</strong> Fast Casual (-38%) and C-Store (-31%) take the two deepest hits, while Casual Dining gains 18%.</li>
+        <li><strong>Family days drain C-Store.</strong> Mother's and Father's Day send guests to sit-down dining, costing C-Store 27% of a normal day.</li>
+        <li><strong>Halloween hurts Casual Dining</strong> (-15%), even though it lifts every other segment slightly.</li>
+        <li><strong>Plan these days segment by segment,</strong> never with one company-wide promotion.</li>
+      </ul>
+    </div>
+  </div>
+</div></section>
+
+<section id="playbook"><div class="wrap">
+  <h2>The playbook: right festival, right guest, right play</h2>
+  <p class="intro">What a CSM can take to each brand before its peak.</p>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Segment</th><th>Peak festival</th><th>Target generation</th><th>The play</th></tr></thead>
+    <tbody>
+      <tr><td>Casual Dining</td><td>Mother's &amp; Father's Day</td><td class="gen">Millennials, then Gen X</td><td>Open reservations early, promote family-meal bundles and staff for about +80% sales.</td></tr>
+      <tr><td>Quick Service</td><td>Thanksgiving Eve</td><td class="gen">Gen X households</td><td>Family-size packs and pre-orders. Sales rise five times faster than visits, so sell the basket.</td></tr>
+      <tr><td>C-Store</td><td>Valentine's Day</td><td class="gen">Gen X &amp; Millennials</td><td>Grab-and-go gift bundles at the counter for last-minute shoppers.</td></tr>
+      <tr><td>Fast Casual</td><td>New Year's Eve</td><td class="gen">All generations</td><td>A traffic play: speed and capacity for 24% more visits.</td></tr>
+      <tr><td>Quick Service</td><td>New Year's Eve</td><td class="gen">Gen Z</td><td>Gen Z's own moment (+17%), the one night they out-lift Gen X. Late-night and group offers.</td></tr>
+    </tbody>
+  </table></div>
+</div></section>
+
+<section id="explore"><div class="wrap">
+  <h2>Explore any segment and festival</h2>
+  <p class="intro">Pick a segment and a festival to see its sales and visit lift, split by generation.</p>
+  <div class="controls">
+    <label>Segment<select id="selSeg"></select></label>
+    <label>Festival<select id="selFest"></select></label>
+  </div>
+  <div class="grid">
+    <div class="panel"><h3 id="exTitle">Sales and visit lift by generation</h3><div class="chart"><canvas id="exChart"></canvas></div></div>
+    <div class="panel"><h3>Segment total</h3>
+      <div class="facts" style="margin:6px 0 10px"><div class="fact"><b id="exSales">–</b><span>sales lift</span></div><div class="fact"><b id="exTxn">–</b><span>visits lift</span></div></div>
+      <p class="small" id="exBase"></p>
+      <p class="small" id="exRead"></p>
+    </div>
+  </div>
+  <h3 style="color:var(--ink);margin:36px 0 12px">All segments and festivals</h3>
+  <div class="tablewrap"><table id="allTable"><thead><tr><th>Festival</th><th>Segment</th><th>Avg daily sales, prior 7 days</th><th>Festival-day sales (daily avg)</th><th>Sales lift</th><th>Visits lift</th></tr></thead><tbody></tbody></table></div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <p><strong style="color:var(--ink)">How this was measured.</strong> Each figure compares festival-day average daily sales and transactions with the same segment's average daily figures over the seven days before the festival. Generations are Gen Z, Millennial, and Gen X + Other. Rows with no restaurant type (under 1% of sales) are excluded. Segment names: casual-fast is shown as Fast Casual, quick-serve as Quick Service.</p>
+  <p>Framing informed by Black Box Intelligence's research on <a href="https://blackboxintelligence.com/blog/which-holidays-are-popular-for-each-restaurant-segment/">holiday popularity by restaurant segment</a>.</p>
+  <p>PAR Punchh, designed to make every store your most profitable store.</p>
+</div></footer>
+<div class="strip"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.2.0/chartjs-plugin-datalabels.min.js"></script>
+<script>
+const C={genz:'#8C9FFF',mill:'#6864D1',genx:'#F8931C',peak:'#FF5719',pos:'#A7AED6',neg:'#5F6488',ink:'#FFFFFF',soft:'#D3D8F0',zero:'#8086AA'};
+const GENS=['Gen Z','Millennial','Gen X + Other'], GC=[C.genz,C.mill,C.genx];
+const FEST=["Mother's Day","Father's Day","Valentine's Day","Thanksgiving Eve","New Year's Eve","Easter Sunday","Halloween"];
+const SEGS=['Casual Dining','Quick Service','C-Store','Fast Casual'];
+const FK={MD:"Mother's Day",FD:"Father's Day",VD:"Valentine's Day",TE:"Thanksgiving Eve",NYE:"New Year's Eve",ES:"Easter Sunday",HW:"Halloween"};
+const SK={cd:'Casual Dining',qs:'Quick Service',cs:'C-Store',cf:'Fast Casual'};
+const GK={Z:'Gen Z',M:'Millennial',GX:'Gen X + Other'};
+
+// segment totals: fest, seg, avg daily sales prior 7d, festival-day sales, sales lift, visits lift
+const D1=[["MD","cd",2682324,4904227,83,40],["FD","cd",2721787,4849800,78,41],["TE","qs",12648221,20248896,60,12],["VD","cs",3738559,5685647,52,12],["NYE","cf",4111522,5007161,22,24],["NYE","cd",3266686,3915189,20,25],["ES","cd",2834918,3347026,18,-5],["MD","qs",8064222,9276391,15,-11],["HW","cs",4537940,5088977,12,8],["MD","cf",4921565,5481928,11,-12],["TE","cd",3153327,3511545,11,7],["TE","cs",4270582,4744405,11,7],["NYE","cs",3333044,3630389,9,8],["VD","cd",2412563,2627514,9,10],["FD","qs",8034930,8714733,8,-11],["HW","cf",4912863,5285926,8,7],["TE","cf",5038018,5416225,8,0],["ES","qs",9589693,10240416,7,-32],["HW","qs",9196257,9778325,6,7],["VD","qs",6754795,7156580,6,6],["VD","cf",4258496,4474089,5,9],["FD","cf",4984152,5129350,3,-14],["NYE","qs",10490372,10174882,-3,19],["HW","cd",2945122,2492966,-15,-7],["FD","cs",4253666,3104739,-27,-23],["MD","cs",4354789,3173244,-27,-23],["ES","cs",4176407,2868223,-31,-25],["ES","cf",4695541,2934156,-38,-46]];
+// generation detail: fest, seg, gen, sales lift, visits lift
+const D2=[["TE","qs","GX",114.0,32.7],["MD","cd","M",87.5,50.8],["FD","cd","M",84.7,52.3],["MD","cd","GX",77.0,31.6],["FD","cd","GX",73.6,32.9],["FD","cd","Z",70.2,36.3],["TE","qs","M",64.3,17.0],["VD","cs","GX",62.9,12.4],["MD","cd","Z",62.5,28.7],["VD","cs","M",56.3,12.7],["ES","qs","GX",40.8,-17.3],["VD","cs","Z",27.5,8.9],["MD","qs","M",26.6,-1.1],["VD","cd","Z",26.5,23.9],["NYE","cd","GX",23.0,28.6],["MD","qs","GX",22.7,-3.4],["NYE","cf","M",22.3,22.6],["NYE","cf","GX",21.8,25.8],["NYE","cd","M",21.0,25.3],["NYE","cf","Z",20.6,21.9],["FD","qs","M",20.2,-2.5],["ES","qs","M",17.9,-25.8],["NYE","qs","Z",17.0,22.0],["ES","cd","Z",16.5,-4.6],["NYE","cd","Z",15.9,20.3],["FD","qs","GX",15.4,-4.5],["MD","cf","GX",13.7,-12.4],["HW","cs","M",13.5,8.7],["ES","cd","GX",13.1,-9.5],["TE","cf","GX",12.8,0.1],["TE","cd","GX",12.3,8.5],["HW","cs","Z",11.7,7.5],["HW","cf","Z",11.6,13.2],["ES","cd","M",11.5,-5.3],["TE","cs","GX",11.4,7.7],["HW","cs","GX",11.1,7.8],["HW","qs","GX",10.5,7.9],["TE","cs","M",10.3,7.1],["MD","cf","M",9.6,-11.5],["HW","cf","GX",9.6,12.6],["TE","qs","Z",9.3,-7.9],["TE","cs","Z",8.7,5.6],["NYE","cs","Z",8.6,8.0],["HW","cf","M",8.1,10.6],["NYE","cs","M",7.9,6.8],["HW","qs","M",7.9,6.8],["VD","cf","GX",7.4,9.3],["VD","cd","M",7.3,7.9],["NYE","cs","GX",7.2,6.7],["VD","cf","Z",7.2,10.8],["VD","qs","M",6.9,7.7],["VD","cd","GX",6.7,8.5],["TE","cf","M",6.0,1.3],["VD","qs","GX",6.0,4.7],["VD","cf","M",4.5,10.1],["FD","cf","GX",4.1,-16.0],["VD","qs","Z",3.0,7.9],["TE","cd","Z",1.1,-2.0],["FD","cf","M",0.1,-15.8],["HW","qs","Z",0.0,6.6],["TE","cd","M",-0.3,2.2],["TE","cf","Z",-0.4,-3.7],["MD","qs","Z",-0.7,-19.1],["FD","qs","Z",-2.6,-17.3],["NYE","qs","M",-2.6,18.3],["MD","cf","Z",-6.2,-23.5],["FD","cf","Z",-11.0,-22.2],["HW","cd","Z",-11.8,-5.8],["HW","cd","GX",-13.3,-4.7],["HW","cd","M",-19.3,-12.4],["FD","cs","Z",-20.5,-19.3],["MD","cs","Z",-21.1,-19.3],["ES","cs","Z",-22.5,-17.6],["NYE","qs","GX",-23.9,12.2],["FD","cs","GX",-27.5,-23.5],["MD","cs","GX",-28.1,-23.5],["FD","cs","M",-29.0,-24.8],["MD","cs","M",-30.2,-25.4],["ES","qs","Z",-32.6,-45.5],["ES","cs","GX",-32.6,-25.2],["ES","cs","M",-33.7,-26.3],["ES","cf","M",-39.2,-48.8],["ES","cf","Z",-41.1,-49.4],["ES","cf","GX",-45.9,-53.9]];
+
+const seg1=(s,f)=>D1.find(r=>SK[r[1]]===s&&FK[r[0]]===f);
+const gen2=(s,f,g)=>D2.find(r=>SK[r[1]]===s&&FK[r[0]]===f&&GK[r[2]]===g);
+const pct=v=>(v>0?'+':'')+(Math.round(v*10)/10).toString().replace(/\.0$/,'')+'%';
+const pct0=v=>(v>0?'+':'')+Math.round(v)+'%';
+const money=v=>'$'+(v>=1e6?(v/1e6).toFixed(2)+'M':Math.round(v/1e3)+'K');
+
+Chart.register(ChartDataLabels);
+Chart.defaults.font.family='Arial, Helvetica, sans-serif';
+Chart.defaults.font.size=13;
+Chart.defaults.color=C.soft;
+Chart.defaults.animation=window.matchMedia('(prefers-reduced-motion: reduce)').matches?false:{duration:600};
+Chart.defaults.plugins.tooltip.callbacks.label=ctx=>' '+(ctx.dataset.label?ctx.dataset.label+': ':'')+pct(ctx.parsed[ctx.chart.options.indexAxis==='y'?'x':'y']);
+const LBL={color:C.ink,font:{weight:'bold',size:12.5},anchor:c=>c.dataset.data[c.dataIndex]<0?'start':'end',align:c=>c.dataset.data[c.dataIndex]<0?'start':'end',offset:3,clamp:true,formatter:v=>pct0(v)};
+const noGrid={grid:{display:false},border:{display:false}};
+const zeroLine=ax=>({id:'zero',afterDatasetsDraw(ch){const sc=ch.scales[ax],c=ch.ctx,z=sc.getPixelForValue(0);c.save();c.strokeStyle=C.zero;c.lineWidth=1;c.beginPath();if(ax==='x'){c.moveTo(z,ch.chartArea.top);c.lineTo(z,ch.chartArea.bottom);}else{c.moveTo(ch.chartArea.left,z);c.lineTo(ch.chartArea.right,z);}c.stroke();c.restore();}});
+
+function hbar(id,labels,values,colors,opts={}){
+  return new Chart(document.getElementById(id),{type:'bar',
+    data:{labels,datasets:[{data:values,backgroundColor:colors,borderRadius:3,barPercentage:.78,categoryPercentage:.9}]},
+    options:{indexAxis:'y',maintainAspectRatio:false,layout:{padding:{right:46,left:46}},
+      scales:{x:{...noGrid,ticks:{display:false},grace:'30%',min:opts.min,max:opts.max},y:{...noGrid,ticks:{color:C.soft}}},
+      plugins:{legend:{display:false},datalabels:LBL}},plugins:[zeroLine('x')]});
+}
+function festChart(id,segName){
+  const rows=FEST.map(f=>[f,seg1(segName,f)[4]]).sort((a,b)=>b[1]-a[1]);
+  const mx=rows[0][1];
+  hbar(id,rows.map(r=>r[0]),rows.map(r=>r[1]),rows.map(r=>r[1]===mx?C.peak:(r[1]>0?C.pos:C.neg)));
+}
+function cohChart(id,segName,peak,dip){
+  const ds=GENS.map((g,i)=>({label:g,backgroundColor:GC[i],borderRadius:3,data:[gen2(segName,peak,g)[3],gen2(segName,dip,g)[3]]}));
+  new Chart(document.getElementById(id),{type:'bar',data:{labels:[peak+' (peak)',dip+' (dip)'],datasets:ds},
+    options:{maintainAspectRatio:false,layout:{padding:{top:22,bottom:4}},
+      scales:{x:{...noGrid,ticks:{color:C.ink,font:{weight:'bold'}}},y:{...noGrid,ticks:{display:false},grace:'24%'}},
+      plugins:{legend:{position:'bottom',labels:{color:C.soft,boxWidth:12,boxHeight:12,padding:14}},datalabels:{...LBL,font:{weight:'bold',size:12}}}},plugins:[zeroLine('y')]});
+}
+festChart('f_cd','Casual Dining');  cohChart('c_cd','Casual Dining',"Mother's Day","Halloween");
+festChart('f_qsr','Quick Service'); cohChart('c_qsr','Quick Service',"Thanksgiving Eve","New Year's Eve");
+festChart('f_cs','C-Store');        cohChart('c_cs','C-Store',"Valentine's Day","Easter Sunday");
+festChart('f_fc','Fast Casual');    cohChart('c_fc','Fast Casual',"New Year's Eve","Easter Sunday");
+
+// basket chart
+const BK=[["Mother's Day","Casual Dining"],["Father's Day","Casual Dining"],["Thanksgiving Eve","Quick Service"],["Valentine's Day","C-Store"],["New Year's Eve","Fast Casual"],["Easter Sunday","Quick Service"]];
+new Chart(document.getElementById('basketChart'),{type:'bar',
+  data:{labels:BK.map(b=>[b[0],b[1]]),datasets:[
+    {label:'Sales lift',backgroundColor:C.genz,borderRadius:3,data:BK.map(b=>seg1(b[1],b[0])[4])},
+    {label:'Visits lift',backgroundColor:C.mill,borderRadius:3,data:BK.map(b=>seg1(b[1],b[0])[5])}]},
+  options:{maintainAspectRatio:false,layout:{padding:{top:20}},
+    scales:{x:{...noGrid,ticks:{color:C.soft}},y:{...noGrid,ticks:{display:false},grace:'22%'}},
+    plugins:{legend:{position:'top',align:'end',labels:{color:C.soft,boxWidth:12,boxHeight:12}},datalabels:LBL}},plugins:[zeroLine('y')]});
+
+// generation lens
+const topFor=g=>D2.filter(r=>GK[r[2]]===g).sort((a,b)=>b[3]-a[3]).slice(0,4);
+[['g_z','Gen Z',C.genz],['g_m','Millennial',C.mill],['g_x','Gen X + Other',C.genx]].forEach(([id,g,col])=>{
+  const t=topFor(g); hbar(id,t.map(r=>[FK[r[0]],SK[r[1]]]),t.map(r=>r[3]),col,{min:0,max:130});
+});
+
+// watch-outs
+const W=D1.filter(r=>r[4]<=-15).sort((a,b)=>a[4]-b[4]);
+hbar('watchChart',W.map(r=>[FK[r[0]],SK[r[1]]]),W.map(r=>r[4]),C.peak);
+
+// explorer
+const selSeg=document.getElementById('selSeg'),selFest=document.getElementById('selFest');
+SEGS.forEach(s=>selSeg.add(new Option(s,s))); FEST.forEach(f=>selFest.add(new Option(f,f)));
+selSeg.value='Quick Service'; selFest.value='Thanksgiving Eve';
+const ex=new Chart(document.getElementById('exChart'),{type:'bar',data:{labels:GENS,datasets:[
+  {label:'Sales lift',backgroundColor:C.genz,borderRadius:3,data:[]},{label:'Visits lift',backgroundColor:C.mill,borderRadius:3,data:[]}]},
+  options:{maintainAspectRatio:false,layout:{padding:{top:22}},scales:{x:{...noGrid,ticks:{color:C.ink,font:{weight:'bold'}}},y:{...noGrid,ticks:{display:false},grace:'24%'}},
+  plugins:{legend:{position:'top',align:'end',labels:{color:C.soft,boxWidth:12,boxHeight:12}},datalabels:{...LBL,formatter:v=>pct(v)}}},plugins:[zeroLine('y')]});
+function upd(){
+  const s=selSeg.value,f=selFest.value,r=seg1(s,f);
+  ex.data.datasets[0].data=GENS.map(g=>gen2(s,f,g)[3]); ex.data.datasets[1].data=GENS.map(g=>gen2(s,f,g)[4]); ex.update();
+  document.getElementById('exTitle').textContent=s+' on '+f+': lift by generation';
+  const es=document.getElementById('exSales'),et=document.getElementById('exTxn');
+  es.textContent=pct0(r[4]); et.textContent=pct0(r[5]);
+  es.style.color=r[4]>=0?C.ink:'#FF8A66'; et.style.color=r[5]>=0?C.ink:'#FF8A66';
+  document.getElementById('exBase').textContent='Average daily sales in the prior 7 days: '+money(r[2])+'. Festival-day sales: '+money(r[3])+'.';
+  const g=GENS.map(x=>[x,gen2(s,f,x)[3]]).sort((a,b)=>b[1]-a[1]);
+  const kind=r[4]-r[5]>15?'a basket-led day: guests spend more per order':(r[5]-r[4]>3?'a traffic-led day: more guests, similar orders':'traffic and order size moving together');
+  document.getElementById('exRead').textContent=(r[4]>=0?'Strongest lift: ':'Smallest drop: ')+g[0][0]+' ('+pct(g[0][1])+'). This is '+kind+'.';
+}
+selSeg.addEventListener('change',upd); selFest.addEventListener('change',upd); upd();
+
+// full table
+const tb=document.querySelector('#allTable tbody');
+[...D1].sort((a,b)=>b[4]-a[4]).forEach(r=>{
+  const tr=document.createElement('tr');
+  tr.innerHTML='<td>'+FK[r[0]]+'</td><td>'+SK[r[1]]+'</td><td>'+money(r[2])+'</td><td>'+money(r[3])+'</td><td class="'+(r[4]>=0?'pos':'neg')+'"><b>'+pct0(r[4])+'</b></td><td class="'+(r[5]>=0?'pos':'neg')+'">'+pct0(r[5])+'</td>';
+  tb.appendChild(tr);
+});
+</script>
+</body>
+</html>
